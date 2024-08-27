@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSSファイルのリンク -->
+    <link rel="stylesheet" href="styles.css">
+    <title>User Management</title>
+</head>
+<body>
+    <div class="container">
+        <h1>User Management</h1>
+        <!-- ユーザー追加フォーム -->
+        <form id="userForm">
+            <!-- 名前入力フィールド -->
+            <input type="text" id="name" placeholder="Name" required>
+            <!-- メールアドレス入力フィールド -->
+            <input type="email" id="email" placeholder="Email" required>
+            <!-- パスワード入力フィールド -->
+            <input type="password" id="password" placeholder="Password" required>
+            <!-- ユーザーを追加するボタン -->
+            <button type="submit">Add User</button>
+        </form>
+        <!-- ユーザーリストを表示するための箇所 -->
+        <ul id="userList"></ul>
+    </div>
+    <!-- Axiosライブラリの読み込み（HTTPリクエストを簡単に行うため） -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- メインのJavaScriptファイルのリンク -->
+    <script src="main.js"></script>
+</body>
+</html>
