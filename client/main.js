@@ -39,9 +39,8 @@ function getUsers() {
 
             // 各ユーザーをリストに追加して表示
             users.forEach(user => {
-                const li = document.createElement('li');  // 新しいリストアイテムを作成
-                li.textContent = `${user.name} (${user.email})`;  // ユーザーの名前とメールアドレスをテキストとして設定
-                userList.appendChild(li);  // リストアイテムをユーザーリストに追加
+                const addUser = `<li>${user.name} (${user.email})<a href="update.html?id=${user.id}">更新</a></li>`
+                userList.insertAdjacentHTML('beforeend', addUser)
             });
         })
         .catch(error => console.error('Error:', error));  // エラーが発生した場合、コンソールにエラーを表示
