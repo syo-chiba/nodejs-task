@@ -39,11 +39,25 @@ function getUsers() {
 
             // 各ユーザーをリストに追加して表示
             users.forEach(user => {
-                const addUser = `<li>${user.name} (${user.email})<a href="update.html?id=${user.id}">更新</a></li>`
+                const addUser = `
+                <li>${user.name} (${user.email})
+                    <a href="update.html?id=${user.id}">更新</a>
+                    <button onClick="deleteUser(${user.id})">削除</button>
+                </li>`
                 userList.insertAdjacentHTML('beforeend', addUser)
             });
         })
         .catch(error => console.error('Error:', error));  // エラーが発生した場合、コンソールにエラーを表示
+}
+
+// ユーザーを削除するための関数
+function deleteUser(userId) {
+    axios.delete(`http://localhost:3000/api/users/${userId}`)
+        .then(response => {
+            alert(response.data.message); // 成功メッセージを表示
+            getUsers(); // 削除後にユーザーリストを更新
+        })
+        .catch(error => console.error('Error deleting user:', error)); // エラーが発生した場合の処理
 }
 
 // ページが読み込まれたときにユーザーリストを取得して表示する
