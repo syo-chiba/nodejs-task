@@ -27,6 +27,15 @@ const User = {
     db.query(query, callback);
   },
 
+  // ユーザー情報をIDで取得するための関数
+  findById: (id, callback) => {
+    const query = `SELECT * FROM users WHERE id = ?`;
+    db.query(query, [id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results[0]);  // 一致するユーザーを返す
+    });
+  },
+
   // 指定されたIDのユーザー情報を更新するメソッド
   updateById: (id, data, callback) => {
     // SQLクエリを定義。指定されたIDのユーザーの名前、メール、パスワードを更新

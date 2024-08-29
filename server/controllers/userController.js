@@ -66,6 +66,22 @@ exports.updateUser = (req, res) => {
   });
 };
 
+// ユーザー情報をIDで取得するためのコントローラー関数
+exports.getUserById = (req, res) => {
+  const { id } = req.params;
+  User.findById(id, (err, user) => {
+      if (err) {
+          console.error('Error fetching user:', err); // エラーログ
+          return res.status(500).json({ error: 'Internal server error' });
+      }
+      if (!user) {
+          console.log('User not found with ID:', id); // デバッグ用のログ
+          return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json(user);
+  });
+};
+
 // ユーザーを削除するための関数
 exports.deleteUser = (req, res) => {
   // リクエストのパラメータから削除するユーザーIDを取得

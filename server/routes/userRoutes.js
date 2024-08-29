@@ -15,6 +15,9 @@ router.post('/users', userController.createUser);
 // '/users'エンドポイントに対してGETリクエストが送信された場合、userController.getUsersを実行
 router.get('/users', userController.getUsers);
 
+// ユーザー情報をIDで取得するためのエンドポイントを定義
+router.get('/users/:id', userController.getUserById);
+
 // ユーザー情報を更新するためのPUTリクエストを処理するルート
 // '/users/:id'エンドポイントに対してPUTリクエストが送信された場合、userController.updateUserを実行
 // ':id'は動的パラメータで、更新するユーザーのIDを指定
